@@ -15,9 +15,9 @@ def game_over_screen(screen, score):
     background_game_over = cargar_y_redimensionar_imagen(f"assets/backgrounds/menu_principal/game_over_background.jpg", ANCHO_PANTALLA, ALTO_PANTALLA)
 
     # Guardar el puntaje en el archivo
-    name = input("Enter your initials: ")
+    nombre = input("Ingrese su nombre: ")
     with open('scores.csv', 'a') as file:
-        file.write(f'{name},{score}\n')
+        file.write(f'{nombre},{score}\n')
 
     while running:
         for event in pygame.event.get():
@@ -32,7 +32,7 @@ def game_over_screen(screen, score):
         screen.blit(background_game_over, [0,0])
         font = pygame.font.Font(None, 74)
         score_text = font.render(f'Score: {score}', True, (0, 0, 0))
-        prompt_text = font.render('Press Enter', True, (0, 0, 0))
+        prompt_text = font.render('Precione Enter', True, (0, 0, 0))
         screen.blit(score_text, (screen.get_width() // 2 - score_text.get_width() // 2, 300))
         screen.blit(prompt_text, (screen.get_width() // 2 - prompt_text.get_width() // 2, 350))
 

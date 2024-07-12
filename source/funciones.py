@@ -21,7 +21,7 @@ def cargar_y_redimensionar_imagen(ruta: str, ancho: int, alto: int) -> pygame.Su
     try:
         imagen = pygame.image.load(ruta)
     except pygame.error as e:
-        raise Exception(f"No se pudo cargar la imagen: {ruta}") from e
+        raise Exception(f"No se pudo cargar la imagen: {ruta}")
 
     imagen_redimensionada = pygame.transform.scale(imagen, (ancho, alto))
     return imagen_redimensionada

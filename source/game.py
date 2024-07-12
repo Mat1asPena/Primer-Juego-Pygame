@@ -14,7 +14,7 @@ from funciones import *
 from sprite_groups import *
 
 def game_loop(screen):
-    clock = pygame.time.Clock()
+    reloj = pygame.time.Clock()
     running = True
     
     # Inicializar 
@@ -214,7 +214,7 @@ def game_loop(screen):
         screen.blit(texto_score, (10, 50))
 
         pygame.display.flip()
-        clock.tick(60)
+        reloj.tick(60)
 
     from game_over import game_over_screen
     game_over_screen(screen, score)

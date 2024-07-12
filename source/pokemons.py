@@ -31,14 +31,14 @@ class Pokemones(pygame.sprite.Sprite):
         self.image = cargar_y_redimensionar_imagen(ruta_imagen, 50, 50)
         self.rect = self.image.get_rect()
         self.rect.center = (x, y)
-        self.velocidad_x = random.choice([-2, -1, 1]) 
-        self.velocidad_y = random.choice([-2, -1, 1])
+        self.velocidad_x = random.choice([-2, -1, 1, 2]) 
+        self.velocidad_y = random.choice([-2, -1, 1, 2])
 
     def update(self):
         self.rect.x += self.velocidad_x
         self.rect.y += self.velocidad_y
         # Rebotar en los bordes de la pantalla
-        if self.rect.left < 850 or self.rect.right > 1000:
+        if self.rect.left < 850 or self.rect.right > ANCHO_PANTALLA:
             self.velocidad_x = -self.velocidad_x
-        if self.rect.top < 0 or self.rect.bottom > 500:
+        if self.rect.top < 0 or self.rect.bottom > ALTO_PANTALLA:
             self.velocidad_y = -self.velocidad_y

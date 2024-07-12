@@ -101,10 +101,28 @@ def pausa(tecla, screen):
         
         pygame.display.flip()
 
-def ordenar(lista:list):
-    n = len(lista)
-    for i in range(n-1):
-        for j in range(n-1-i):
-            if int(lista[j][1]) < int(lista[j+1][1]):
-                lista[j], lista[j+1] = lista[j+1], lista[j]
+def ordenar(lista: list):
+    """
+    Ordena una lista de tuplas en función del segundo elemento en orden descendente.
+    Args:
+    - lista (list): La lista de tuplas a ordenar.
+    Raises:
+    - TypeError: Si la entrada no es una lista o no contiene elementos.
+    - ValueError: Si los elementos en las tuplas no pueden ser convertidos a enteros.
+    """
+    if not isinstance(lista, list):
+        raise ValueError("La entrada debe ser una lista.")
+    
+    if len(lista) < 2:
+        raise ValueError("La lista debe contener al menos dos elementos.")
+    
+    try:
+        n = len(lista)
+        for i in range(n-1):
+            for j in range(n-1-i):
+                if int(lista[j][1]) < int(lista[j+1][1]):
+                    lista[j], lista[j+1] = lista[j+1], lista[j]
+    except ValueError as e:
+        raise ValueError("El elemento de la lista debe ser convertible entero.") from e
+
 

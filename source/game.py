@@ -156,16 +156,16 @@ def game_loop(screen):
             sonido_colision.play()
             score += 10
         
-        # colisiones_ataques_cielo = pygame.sprite.spritecollide(personaje, ataques_cielo, True)
-        # for ataque in colisiones_ataques_cielo:
-        #     personaje.vidas -= 1
-        #     #pygame.draw.circle(screen, (255, 0, 255), personaje.rect.center, 50, 3)
-        #     personaje.inmune = True
-        #     personaje.tiempo_inmunidad = pygame.time.get_ticks()
-        # if personaje.inmune:
-        #     tiempo_actual = pygame.time.get_ticks()
-        #     if tiempo_actual - personaje.tiempo_inmunidad >= 500:
-        #         personaje.inmune = False
+        colisiones_ataques_cielo = pygame.sprite.spritecollide(personaje, ataques_cielo, True)
+        for ataque in colisiones_ataques_cielo:
+            personaje.vidas -= 1
+            #pygame.draw.circle(screen, (255, 0, 255), personaje.rect.center, 50, 3)
+            personaje.inmune = True
+            personaje.tiempo_inmunidad = pygame.time.get_ticks()
+        if personaje.inmune:
+            tiempo_actual = pygame.time.get_ticks()
+            if tiempo_actual - personaje.tiempo_inmunidad >= 500:
+                personaje.inmune = False
 
         colisiones_pocion = pygame.sprite.spritecollide(personaje, todas_pociones, True)
         for curacion in colisiones_pocion:

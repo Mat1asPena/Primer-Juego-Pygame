@@ -26,34 +26,43 @@ def cargar_y_redimensionar_imagen(ruta: str, ancho: int, alto: int) -> pygame.Su
     imagen_redimensionada = pygame.transform.scale(imagen, (ancho, alto))
     return imagen_redimensionada
 
-def pausa(tecla):
-    """pausa el bucle del jeugo
+def pausa(tecla:pygame.key, screen:pygame.Surface):
+    """
+    Pausa el bucle del juego y muestra un mensaje de pausa en la pantalla.
 
     Args:
-        tecla (la tecla a la cual se le asigana la funcion): description
+    - tecla (int): La tecla que se utilizará para pausar y reanudar el juego.
+    - screen (pygame.Surface): La pantalla del juego donde se mostrará el mensaje de pausa.
     """
     continuar = True
-    while continuar :
-
+    while continuar:
         for evento in pygame.event.get():
             if evento.type == pygame.KEYDOWN:
                 if evento.key == tecla:
                     continuar = False
 
-def dibujar_boton(screen,text, rect, color, color_si_se_toca, alpha, action=None):
-    """summary
+        fuente = pygame.font.Font(None, 74)
+        mensaje_pausa = fuente.render("PAUSA", True, (255, 0, 0))
+        mensaje_pausa_rect = mensaje_pausa.get_rect(center=(ANCHO_PANTALLA // 2, ALTO_PANTALLA // 2))
+        screen.blit(mensaje_pausa, mensaje_pausa_rect)
+        
+        pygame.display.flip()
+
+def dibujar_boton(screen,text, rect, color, color_si_se_toca, alpha, action):
+    """
+    Dibuja un botón en la pantalla y ejecuta una acción si el botón es presionado.
 
     Args:
-        screen (type): pantalla 
-        text (type): texto a escribir 
-        rect (type): rectangulo a pasar 
-        color (type): color_del cuadrado 
-        color_si_se_toca (type): __ 
-        alpha (type): description 
-        action (type, optional): description. Defaults to None. 
+    - screen (pygame.Surface): La pantalla donde se dibujará el botón.
+    - text (str): El texto que se mostrará en el botón.
+    - rect (pygame.Rect): El rectángulo que define la posición y el tamaño del botón.
+    - color (tuple): El color del botón.
+    - color_si_se_toca (tuple): El color del botón cuando el mouse está sobre él.
+    - alpha (int): El valor de transparencia del botón.
+    - action (callable, optional): La acción a ejecutar cuando se presiona el botón. Defaults to None.
 
     Returns:
-        type: description
+    - bool: True si el botón está siendo tocado, False en caso contrario.
     """
     import pygame
     font = pygame.font.Font(None, 74)

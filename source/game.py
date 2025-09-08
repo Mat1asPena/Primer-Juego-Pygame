@@ -16,7 +16,7 @@ from sprite_groups import *
 def game_loop(screen):
     reloj = pygame.time.Clock()
     running = True
-    
+
     # Inicializar 
     score = 0
     pokeball_generations = 0
@@ -33,7 +33,7 @@ def game_loop(screen):
     flag_musica = True
 
     sonido_colision = pygame.mixer.Sound("assets/musica/pick_pokeball.mp3")
-    sonido_colision.set_volume(0.5)  #                                                               VOLUMEN PICK_POKEBALL
+    sonido_colision.set_volume(0.5)  #                             VOLUMEN PICK_POKEBALL
 
     corazon = cargar_y_redimensionar_imagen("assets/vida/corazon.png", 30, 30)
 

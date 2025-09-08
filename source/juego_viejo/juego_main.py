@@ -9,8 +9,8 @@ pygame.init()
 SCREEN = pygame.display.set_mode(SCREEN_SIZE)
 pygame.display.set_caption("test Juego")
 pygame.mouse.set_visible(0)  # 0 no se ve el mouse | 1 se ve el mouse
-imagen_fondo = pygame.image.load("background_bosque_juego.jpg")
-imagen_fondo = pygame.transform.scale(imagen_fondo, SCREEN_SIZE)
+# imagen_fondo = pygame.image.load("background_bosque_juego.jpg")
+# imagen_fondo = pygame.transform.scale(BLACK, SCREEN_SIZE)
 
 en_ejecucion = True
 reloj = pygame.time.Clock()
@@ -103,7 +103,7 @@ while en_ejecucion:
     jugador.movimiento(velocidad_x, velocidad_y)
     jugador.update()
 
-    SCREEN.blit(imagen_fondo, [0, 0])
+    SCREEN.blit(BLANCO, [0, 0])
     all_sprites.draw(SCREEN)
     jugador.dibujar(SCREEN)
 
